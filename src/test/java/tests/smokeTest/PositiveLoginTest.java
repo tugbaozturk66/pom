@@ -1,5 +1,6 @@
 package tests.smokeTest;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.QAConcortPage;
 import utilities.ConfigReader;
@@ -13,15 +14,15 @@ public class PositiveLoginTest {
         Driver.getDriver().get(ConfigReader.getProperty("CHQAUrl"));
         QAConcortPage qaConcortPage=new QAConcortPage();
         //login butonuna bas
-        qaConcortPage.ilkLoginLinki.click();
+        qaConcortPage.ilkloginLinki.click();
         //test data username: manager ,
-        qaConcortPage.usernameKutusu.sendKeys(ConfigReader.getProperty("CHQAValidUsername"));
+        qaConcortPage.userNameKutusu.sendKeys(ConfigReader.getProperty("CHQAValidUsername"));
         //test data password : Manager1!
         qaConcortPage.passwordKutusu.sendKeys(ConfigReader.getProperty("CHQAValidPassword"));
         qaConcortPage.loginButonu.click();
         //Degerleri girildiginde sayfaya basarili sekilde girilebildigini test et
-        Assert.assertTrue(qaConcortPage.basariliGirisYaziElementi.isDisplayed());
+        Assert.assertTrue(qaConcortPage.basariliGirisYazisiElementi.isDisplayed());
         Driver.closeDriver();
     }
 }
-}
+
